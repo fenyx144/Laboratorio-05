@@ -50,33 +50,31 @@ sub evaluar_expresion {
 sub generar_html {
     my ($expresion, $resultado) = @_;
 
-    # Imprimir el encabezado HTML
     print $q->header('text/html; charset=UTF-8');
     print "<!DOCTYPE html>";
     print "<html lang=\"es\">";
     print "<head>";
-    print "<title>Calculadora</title>";
+    print "<title>Lab 05: Expresiones Regulares en Perl</title>";
     print "<meta charset=\"UTF-8\">";
     print "<link rel=\"stylesheet\" href=\"../css/mystyle.css\">";
     print "</head>";
     print "<body>";
 
-    print "<h1>Calculadora</h1>";
-    print "<form action=\"cgi-bin/evalExpresion.pl\" method=\"post\">";
-    print "<input type=\"text\" name=\"expresion\" placeholder=\"Ingrese expresión\" value=\"" . $q->escapeHTML($expresion) . "\" required>";
+    print "<h2>Lab 05: Expresiones regulares en Perl</h2>";
+    print "<form action=\"/cgi-bin/evalExpresion.pl\" method=\"post\">";
+    print "<input type=\"text\" name=\"expresion\" placeholder=\"Ingrese expresión\" value=\"" . $expresion . "\" required>";
     print "<button type=\"submit\">Calcular</button>";
     print "</form>";
 
-    # Imprimir el resultado si está definido
     if (defined $resultado) {
         print "<h2>Resultado: $resultado</h2>";
     }
 
-    # Imprimir el footer
-    print "<footer>";
-    print "<p>Rivas Revilla Diego, Cornejo Hurtado Dario &copy; 2024/10/27 - Programación Web Lab. Grupo F.</p>";
-    print "</footer>";
+    print "<footer class=\"footer\">";
+	print "Rivas Revilla Diego, Cornejo Hurtado Dario &copy; 2024/10/24 - Programacion Web Lab. Grupo F.";
+	print "</footer>";
 
     print "</body>";
     print "</html>";
+
 }

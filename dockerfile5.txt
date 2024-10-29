@@ -48,14 +48,11 @@ RUN service apache2 restart
 RUN systemctl enable ssh
 #RUN service ssh start
 
-COPY ./cgi-bin/ /usr/lib/cgi-bin
-RUN chmod +x /usr/lib/cgi-bin/*
+COPY ./cgi-bin/evalExpresion.pl /usr/lib/cgi-bin
+RUN chmod +x /usr/lib/cgi-bin/evalExpresion.pl
 
-COPY ./html/index.html /var/www/html
-
-# Aquí es donde se copia la carpeta CSS
+COPY ./index.html /var/www/html
 COPY ./css/ /var/www/html/css/
-
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 EXPOSE 80
